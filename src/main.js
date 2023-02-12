@@ -1,29 +1,11 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import {createRouter, createWebHashHistory} from 'vue-router'
-import ViewNotes from '@/views/viewNotes.vue'
-import ViewStats from '@/views/ViewStats.vue'
+import { createApp } from "vue";
+import { createPinia } from "pinia";
+import App from "./App.vue";
+import { router } from "./router";
 
-import './assets/main.css'
-
-const router = createRouter({
-    history:createWebHashHistory(),
-    routes: [
-        {
-            path:'/',
-            name:'notes',
-            component: ViewNotes
-        },
-        {
-            path:'/stats',
-            name:'stats',
-            component: ViewStats
-        },
-    ]
-})
+import "./assets/main.css";
 
 const app = createApp(App);
+app.use(createPinia());
 app.use(router);
-app.mount('#app');
-
-
+app.mount("#app");
